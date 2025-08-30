@@ -3,19 +3,20 @@ import createMDX from '@next/mdx';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
+// Configure MDX to also accept plain .md files (if desired for simpler content)
 const withMDX = createMDX({
-    extension: /\.mdx?$/,
+    extension: /\.(md|mdx)$/,
     options: {
         remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex],
-        // Critical: do NOT inject @mdx-js/react provider (prevents createContext usage on server)
-        providerImportSource: undefined
+        rehypePlugins: [rehypeKatex]
+        // Using default provider so that mdx-components.js can map elements.
     }
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    pageExtensions: ['js', 'jsx', 'md', 'mdx']
+    // Allow MDX + MD + TS/TSX if added later.
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 };
 
 export default withMDX(nextConfig);

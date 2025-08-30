@@ -20,15 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <header className="border-b mb-6">
-          <nav className="flex items-center gap-3 px-6 py-3 text-sm">
-            <a href="/" className="font-semibold text-accent">Home</a>
-            <a href="/docs/what-is-matrix" className="text-accent hover:underline">What is a Matrix?</a>
-            <a href="/docs/addition" className="text-accent hover:underline">Addition</a>
-            <a href="/docs/multiplication" className="text-accent hover:underline">Multiplication</a>
-            <a href="/docs/determinant" className="text-accent hover:underline">Determinant</a>
-            <a href="/docs/inverse" className="text-accent hover:underline">Inverse</a>
-          </nav>
+        <header className="border-b mb-6 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50">
+          <div className="flex items-center justify-between px-6 py-3 text-sm">
+            <div className="flex items-center gap-3">
+              {/* Placeholder for search input */}
+              {/* <input type="search" placeholder="Search" className="hidden md:block text-sm border rounded px-2 py-1 w-48" /> */}
+              {/* Placeholder for future theme toggle */}
+              {/* <button className="text-xs text-accent">Theme</button> */}
+            </div>
+          </div>
         </header>
         <main className="px-6 prose max-w-none">
           {children}

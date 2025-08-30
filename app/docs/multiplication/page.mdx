@@ -5,6 +5,8 @@ export const metadata = {
 
 # Matrix Multiplication
 
+---
+
 ## Overview
 
 The product $AB$ is defined when the **inner dimensions match**: if $A$ is $m\times n$ and $B$ is $n\times p$, then $AB$ exists and is $m\times p$. Order matters; generally $AB \ne BA$.
@@ -36,15 +38,17 @@ $$
 
 Inner dimensions match (3). Result will be $2\times 2$.
 
-Compute:
-\[
-c*{11}=1\cdot2 + 2\cdot1 + 0\cdot(-2)=4,\quad
-c*{12}=1\cdot5 + 2\cdot0 + 0\cdot3=5,
-\]
-\[
-c*{21}=3\cdot2 + (-1)\cdot1 + 4\cdot(-2)=6 -1 -8=-3,\quad
-c*{22}=3\cdot5 + (-1)\cdot0 + 4\cdot3=15 + 0 +12=27.
-\]
+Compute each entry (row of $A$ dot column of $B$):
+
+$$
+\begin{aligned}
+c_{11} &= 1\cdot2 + 2\cdot1 + 0\cdot(-2) = 2 + 2 + 0 = 4, \\
+c_{12} &= 1\cdot5 + 2\cdot0 + 0\cdot3 = 5 + 0 + 0 = 5, \\
+c_{21} &= 3\cdot2 + (-1)\cdot1 + 4\cdot(-2) = 6 - 1 - 8 = -3, \\
+c_{22} &= 3\cdot5 + (-1)\cdot0 + 4\cdot3 = 15 + 0 + 12 = 27.
+\end{aligned}
+$$
+
 Thus
 
 $$

@@ -8,13 +8,26 @@
   The layout injects font variables via next/font; we map them here.
 */
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
-  /* tailwind gray-900 */
-  --muted: #6b7280;
-  /* tailwind gray-500 */
-  --accent: #2563eb;
-  /* tailwind blue-600 */
+  /* Core palette (soft neutral background + accessible foreground) */
+  --background: #f5f4f1; /* page background */
+  --background-alt: #ebe7e2; /* subtle section / stripe */
+  --surface: #ffffff; /* cards / main content surfaces */
+  --surface-elevated: #faf9f7; /* slight elevation */
+  --foreground: #1f2733; /* main text */
+  --foreground-soft: #475569; /* headings / secondary */
+  --muted: #667085; /* muted explanatory text */
+  --border: #dad7d2; /* generic border */
+
+  /* Accent (slightly softened blue) */
+  --accent: #1f5ecf;
+  --accent-hover: #184da8;
+  --accent-soft: #e2edff; /* background for active states */
+
+  /* Inline feedback (reserved - future) */
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --success: #047857;
+
   --radius-lg: 0.5rem;
   --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
   --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace);
@@ -66,10 +79,12 @@
   a {
     color: var(--accent);
     text-decoration: none;
+    transition: color .15s, background-color .15s;
   }
 
   a:hover,
   a:focus {
+    color: var(--accent-hover);
     text-decoration: underline;
   }
 
@@ -78,7 +93,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline: 3px solid rgba(31, 94, 207, 0.28);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -156,6 +171,73 @@
   footer {
     color: var(--muted);
   }
+
+  /* Docs layout */
+  .docs-sidebar {
+    position: sticky;
+    top: 2rem;
+    border-right: 1px solid var(--border);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-elevated);
+    box-shadow: 0 4px 16px rgba(31, 94, 207, 0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+    z-index: 10;
+  }
+  .docs-sidebar h2 {
+    letter-spacing: .05em;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: .55rem;
+  }
+  .docs-nav-group { margin-bottom: 1.25rem; }
+  .docs-link {
+    display: block;
+    border-radius: 6px;
+    padding: .5rem .6rem .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--foreground-soft);
+    text-decoration: none;
+    position: relative;
+    transition: background .15s, color .15s, border-color .15s;
+    border: 1px solid transparent;
+  }
+  .docs-link:hover { background: var(--accent-soft); color: var(--accent-hover); }
+  .docs-link-active {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-weight: 600;
+    border-color: var(--accent-soft);
+  }
+  .docs-link-active::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  .docs-link-disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+    background: transparent;
+    border-color: transparent;
+  }
+  .docs-content {
+    max-width: 56rem; /* ~896px */
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+  }
+  .docs-content > :first-child { margin-top: 0; }
+  .docs-content h1 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+  .docs-content h2 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: .75rem; }
+  .docs-content h3 { font-size: 1.05rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: .5rem; }
 
   /* Ensure header nav links have spacing even if utility classes are not present */
   header nav a {
