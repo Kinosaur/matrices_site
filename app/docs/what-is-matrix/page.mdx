@@ -1,0 +1,38 @@
+export const metadata = {
+  title: "What is a Matrix?",
+  description: "A concise introduction to matrices: notation, shapes, and a small worked example.",
+};
+
+# What is a Matrix?
+
+## Overview
+
+A matrix is a rectangular array of numbers (or other objects) arranged in rows and columns. Matrices encode structured data and linear maps; they are written as $A\in\mathbb{R}^{m\times n}$ when $A$ has $m$ rows and $n$ columns.
+
+## Notation and shape
+
+- Shape: $m\times n$ (rows $\times$ columns).
+- Entry notation: $a_{ij}$ is the entry in row $i$, column $j$.
+- Special cases: a row vector is $1\times n$, a column vector is $m\times 1$, a scalar is $1\times1$, and a square matrix has $m=n$.
+
+## Small example (2×2)
+
+Let
+$$
+A=\begin{bmatrix}1 & 2 \\\ 3 & 4\end{bmatrix} \in \mathbb{R}^{2\times2}.
+$$
+
+This matrix has entries $a_{11}=1$, $a_{12}=2$, $a_{21}=3$, $a_{22}=4$. It's a convenient size for illustrating operations such as addition (entrywise) and multiplication (row-by-column).
+
+## Why it matters
+
+Matrices are the standard language for linear algebra. They represent systems of linear equations, transformations, datasets, adjacency relations, and more. Many algorithms operate on matrices; keeping track of shape and entry indices is the most important practical habit.
+
+## Quick sanity checks
+
+- Always check shapes before combining matrices: operations are only defined for compatible shapes.
+- Do not "pad" matrices with zeros to force compatibility — the operation is undefined unless explicitly specified by a different construction.
+
+---
+
+Keep this page short; if you'd like, I can add a small visual (SVG) showing row/column indices or link this page from the main nav.

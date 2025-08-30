@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
         <header className="border-b mb-6">
           <nav className="flex items-center gap-3 px-6 py-3 text-sm">
             <a href="/" className="font-semibold text-accent">Home</a>
+            <a href="/docs/what-is-matrix" className="text-accent hover:underline">What is a Matrix?</a>
             <a href="/docs/addition" className="text-accent hover:underline">Addition</a>
             <a href="/docs/multiplication" className="text-accent hover:underline">Multiplication</a>
             <a href="/docs/determinant" className="text-accent hover:underline">Determinant</a>

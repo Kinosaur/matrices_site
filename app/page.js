@@ -9,6 +9,7 @@ export default function Home() {
       </p>
       <p>
         Start with{' '}
+        <a href="/docs/what-is-matrix" className="text-accent underline">What is a Matrix?</a>,{' '}
         <a href="/docs/addition" className="text-accent underline">Matrix Addition</a>{' '}
         and{' '}
         <a href="/docs/multiplication" className="text-accent underline">Matrix Multiplication</a>.
