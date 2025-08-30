@@ -1,0 +1,67 @@
+export const metadata = {
+  title: "Matrix Addition",
+  description: "Definition, procedure, and example for matrix addition.",
+};
+
+# Matrix Addition
+
+## Overview
+
+Add two matrices only if they have the **exact same shape**. The result keeps that shape and each entry is the sum of the corresponding entries.
+
+## Definition
+
+Let $A,B \in \mathbb{R}^{m\times n}$. Their sum $C = A + B$ is defined entrywise:
+
+$$
+c_{ij} = a_{ij} + b_{ij}.
+$$
+
+Subtraction: $A - B = A + (-1)B$.
+
+Example:
+
+$$
+A = \begin{bmatrix}4 & 1 \\ 0 & 3\end{bmatrix},\qquad
+B = \begin{bmatrix}2 & 5 \\ 7 & 1\end{bmatrix}\quad\Rightarrow\quad
+A - B = \begin{bmatrix}4-2 & 1-5 \\ 0-7 & 3-1\end{bmatrix} = \begin{bmatrix}2 & -4 \\ -7 & 2\end{bmatrix}.
+$$
+
+## Procedure
+
+1. Check dimensions: rows$(A)$ = rows$(B)$ and cols$(A)$ = cols$(B)$. If not, stop (undefined).
+2. For each row $i$ and column $j$, compute $c_{ij}=a_{ij}+b_{ij}$.
+3. Complexity: performing the operation requires $m\cdot n$ scalar additions (one per entry), where $A,B\in\mathbb{R}^{m\times n}$.
+
+## Worked Example
+
+$$
+A=\begin{bmatrix} 1 & 3 & 1 \\ 1 & 0 & 0 \end{bmatrix},\quad
+B=\begin{bmatrix} 0 & 0 & 5 \\ 7 & 5 & 0 \end{bmatrix}
+$$
+
+Add entrywise:
+
+$$
+A+B=\begin{bmatrix}
+1+0 & 3+0 & 1+5 \\
+1+7 & 0+5 & 0+0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 3 & 6\\
+8 & 5 & 0
+\end{bmatrix}.
+$$
+
+## Pitfalls
+
+- Mismatched shapes (e.g. $2\times 3$ with $3\times 2$).
+- Treating subtraction as separate logic (just add the negated second matrix).
+
+- Attempting to "pad" a smaller matrix with zeros to force dimensions to match (the operation is undefined; do not pad).
+- Confusing addition (entrywise / componentwise) with multiplication (row-by-column); they are fundamentally different operations.
+
+## Summary
+
+Addition is **entrywise** and requires identical dimensions; subtraction uses the same rule.

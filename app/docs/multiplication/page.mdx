@@ -1,0 +1,71 @@
+export const metadata = {
+  title: "Matrix Multiplication",
+  description: "Definition, dimension rule, algorithm, and examples.",
+};
+
+# Matrix Multiplication
+
+## Overview
+
+The product $AB$ is defined when the **inner dimensions match**: if $A$ is $m\times n$ and $B$ is $n\times p$, then $AB$ exists and is $m\times p$. Order matters; generally $AB \ne BA$.
+
+## Definition
+
+For $A \in \mathbb{R}^{m\times n}$ and $B \in \mathbb{R}^{n\times p}$ the product $C=AB$ has entries
+
+$$
+c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}.
+$$
+
+## Algorithm (Row-by-Column)
+
+1. Check: columns$(A)=\,$rows$(B)$. If not, stop (undefined).
+2. Initialize an $m\times p$ matrix $C$ with zeros.
+3. For each $i=1..m$ and $j=1..p$:
+   - Accumulate $c_{ij} += a_{ik} b_{kj}$ for $k=1..n$.
+4. Return $C$.
+
+## Worked Example (Shape Change)
+
+Let
+
+$$
+A=\begin{bmatrix}1 & 2 & 0 \\ 3 & -1 & 4\end{bmatrix} \quad (2\times 3),\qquad
+B=\begin{bmatrix}2 & 5 \\ 1 & 0 \\ -2 & 3\end{bmatrix} \quad (3\times 2).
+$$
+
+Inner dimensions match (3). Result will be $2\times 2$.
+
+Compute:
+\[
+c*{11}=1\cdot2 + 2\cdot1 + 0\cdot(-2)=4,\quad
+c*{12}=1\cdot5 + 2\cdot0 + 0\cdot3=5,
+\]
+\[
+c*{21}=3\cdot2 + (-1)\cdot1 + 4\cdot(-2)=6 -1 -8=-3,\quad
+c*{22}=3\cdot5 + (-1)\cdot0 + 4\cdot3=15 + 0 +12=27.
+\]
+Thus
+
+$$
+AB=\begin{bmatrix}4 & 5 \\ -3 & 27\end{bmatrix}.
+$$
+
+## Non-Commutativity
+
+Using $X=\begin{bmatrix}1&2\\0&1\end{bmatrix}$, $Y=\begin{bmatrix}0&1\\0&0\end{bmatrix}$:
+
+$$
+XY=\begin{bmatrix}0&1\\0&0\end{bmatrix},\qquad
+YX=\begin{bmatrix}0&0\\0&0\end{bmatrix},\quad XY\ne YX.
+$$
+
+## Pitfalls
+
+- Ignoring dimension rule (trying $2\times 3$ times $2\times 2$).
+- Assuming commutativity.
+- Mixing up row vs column indices in the summation.
+
+## Summary
+
+Multiply only when inner sizes match; each output entry is a dot product of a row of $A$ and a column of $B$.
