@@ -1,42 +1,108 @@
 export const metadata = {
   title: "What is a Matrix?",
-  description:
-    "A concise introduction to matrices: notation, shapes, and a small worked example.",
+  description: "Definition, notation, examples, tips, and a quick comprehension check before operations.",
 };
 
 # What is a Matrix?
 
+> A matrix is a **rectangular array of numbers** arranged in rows and columns.
+
+You can picture it like a small spreadsheet: rows go left–to–right, columns go top–to–bottom. Formally we write $A \in \mathbb{R}^{m\times n}$ to mean matrix $A$ has $m$ rows and $n$ columns and its entries are real numbers.
+
 ---
 
-## Overview
+## Why we use matrices
 
-A matrix is a rectangular array of numbers (or other objects) arranged in rows and columns. Matrices encode structured data and linear maps; they are written as $A\in\mathbb{R}^{m\times n}$ when $A$ has $m$ rows and $n$ columns.
+Matrices compress structure. Instead of writing a system of linear equations line by line, we collect the coefficients into a matrix. They also represent linear transformations ("functions" that preserve addition and scaling) and appear everywhere: graphics, statistics, networks, optimization, machine learning.
 
-## Notation and shape
+Example system:
+$$
+\begin{aligned}
+x + 2y &= 5\\
+3x - y &= 7
+\end{aligned}
+$$
+As an **augmented matrix** (coefficients | constants):
+$$
+\left[\begin{array}{rr|r}
+1 & 2 & 5\\
+3 & -1 & 7
+\end{array}\right]
+$$
 
-- Shape: $m\times n$ (rows $\times$ columns).
-- Entry notation: $a_{ij}$ is the entry in row $i$, column $j$.
-- Special cases: a row vector is $1\times n$, a column vector is $m\times 1$, a scalar is $1\times1$, and a square matrix has $m=n$.
+---
 
-## Small example (2×2)
+## Notation & shape
 
-Let
+- Shape: $m\times n$ = $m$ rows by $n$ columns.
+- Entry notation: $a_{ij}$ = entry in row $i$, column $j$.
+- Row vector: $1\times n$. Column vector: $m\times 1$.
+- Scalar: $1\times1$ (just a single number, but we can treat it as a $1\times1$ matrix when convenient).
+- Square matrix: $m=n$.
 
+Small example:
 $$
 A=\begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix} \in \mathbb{R}^{2\times2}.
 $$
-
-This matrix has entries $a_{11}=1$, $a_{12}=2$, $a_{21}=3$, $a_{22}=4$. It's a convenient size for illustrating operations such as addition (entrywise) and multiplication (row-by-column).
-
-## Why it matters
-
-Matrices are the standard language for linear algebra. They represent systems of linear equations, transformations, datasets, adjacency relations, and more. Many algorithms operate on matrices; keeping track of shape and entry indices is the most important practical habit.
-
-## Quick sanity checks
-
-- Always check shapes before combining matrices: operations are only defined for compatible shapes.
-- Do not "pad" matrices with zeros to force compatibility — the operation is undefined unless explicitly specified by a different construction.
+Entries: $a_{11}=1, a_{12}=2, a_{21}=3, a_{22}=4$.
 
 ---
 
-Keep this page short; if you'd like, I can add a small visual (SVG) showing row/column indices or link this page from the main nav.
+## Building an augmented matrix (mini illustration)
+
+Given a system, line up variables $x,y,z$ (or whatever ordering you choose), fill in zero for any missing variable, and place constants to the right of a vertical bar:
+$$
+2x - 3y + 0z = 4 \;\;\longrightarrow\;\; [\;2\; -3\; 0\mid 4\;].
+$$
+
+---
+
+## Tips & habits
+
+- Always compare shapes before an operation; most mistakes are illegal dimension matches.
+- Don’t "pad with zeros" to force an operation—if shapes don’t align, the operation is undefined.
+- Keep a consistent variable order when forming matrices from equations.
+- Write indices clearly: row first, column second ($a_{ij}$ not $a_{ji}$).
+- For small mental checks, test with a $2\times2$ example: if a statement fails there, it’s false in general.
+
+---
+
+## Quick practice: system to augmented matrix
+
+Convert the system to a single augmented matrix (variables in order $x,y,z$):
+
+1. $3x - y = 1$
+2. $4x + 5z = 6$
+3. $x + 2y = -1 + 32$
+4. $2y - 9 = -5z$
+
+**Normalize each equation (move everything except constants to the left, combine constants):**
+1. $3x - 1y + 0z = 1$
+2. $4x + 0y + 5z = 6$
+3. $x + 2y + 0z = 31$ (because $-1 + 32 = 31$)
+4. $0x + 2y + 5z = 9$ (add $5z$ to LHS, add $9$ to RHS)
+
+Coefficients | constants:
+$$
+\left[\begin{array}{rrr|r}
+3 & -1 & 0 & 1\\
+4 & 0 & 5 & 6\\
+1 & 2 & 0 & 31\\
+0 & 2 & 5 & 9
+\end{array}\right]
+$$
+
+**Self‑check prompts:**
+- Did every row include a coefficient for each of $x,y,z$ (using 0 where absent)?
+- Are constants isolated on the right column?
+- Could any row be simplified (e.g., common factor) without changing the solution set? (Not required, just a habit.)
+
+---
+
+## Remember before moving on
+
+1. Shape notation ($m\times n$) and index order ($a_{ij}$) are foundational.
+2. Augmented matrix: coefficients + constants separated by a bar.
+3. Never invent entries to force compatibility—choose the right operation instead.
+
+Next up: try **Matrix Addition** (entrywise operation) or jump to **Matrix Multiplication** (row-by-column dot products) once you are comfortable with shapes.
