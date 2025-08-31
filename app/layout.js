@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <footer className="mt-12 border-t px-6 py-4 text-xs muted">
           Matrix Basics — draft.
         </footer>
+        <Analytics />
       </body>
     </html>
   );
